@@ -1,0 +1,22 @@
+<%- include("../layouts/header") %> 
+    <h3>Log In</h3>
+
+    <form id="login-form">
+        <div class="form-group mb-3">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" class="form-control" required>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Log In</button>
+        </div>
+
+        <div class="err-msg"></div>
+    </form>
+    <script src="/js/auth/login.js"></script>
+<%- include("../layouts/footer") %> 

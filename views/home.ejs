@@ -1,0 +1,45 @@
+<%- include("layouts/header") %> 
+    <ul class="list-group list-group-light">
+        <% news.forEach(item => { %>
+            <li class="list-group-item d-flex">
+                <button class="btn <% if (user && item.likes.includes(user._id)) { %> btn-primary <% } else { %> btn-outline-primary <% } %>mx-3 news-like" id="<%= item.slug %>">
+                    <i class="fa-solid fa-angle-up fa-2x"></i><br>
+                    <span class="like-count"><%= item.likes.length %></span>
+                </button> 
+                <div class="d-flex align-items-center">
+                    <div>
+                        <a href="<%= item.url %>" target="_blank" referrerpolicy="noreferrer"><%= item.title %> </a><br>
+                        <small class="text-muted">
+                            posted by <a href="/users/<%= item.author.username %>"><%= item.author.username %> </a> <%= item.date_created %> | <a href="/news/<%= item.slug %>">view</a> 
+                            <% if (user.username == item.author.username) { %>
+                                 | <a href="/news/<%= item.slug %>/edit">edit</a> | <a href="#" data-mdb-toggle="modal" data-mdb-target="#exampleModal<%= item.slug %>">delete</a>
+                                <div class="modal fade" id="exampleModal<%= item.slug %>" tabindex="-1" aria-labelledby="exampleModal<%= item.slug %>Label" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModal<%= item.slug %>Label">Delete News Item</h5>
+                                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <form class="news-delete-form">
+                                            <div class="modal-body">
+                                                Are u sure you want to delete <strong><%= item.title %></strong>?
+                                                <input type="hidden" name="slug" value="<%= item.slug %>">
+                                            </div>
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-primary" data-mdb-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Delete News Item</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    </div>
+                                </div>
+                            <% } %> 
+                        </small>
+                    </div>
+                </div>
+            </li>
+        <% }) %> 
+    </ul>
+    <script src="/js/news/like.js"></script>
+    <script src="/js/news/delete.js"></script>
+<%- include("layouts/footer") %>

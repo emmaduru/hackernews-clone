@@ -1,0 +1,24 @@
+<%- include("../layouts/header") %> 
+    <h3>Add a News Item</h3>
+
+    <form id="news-create-form">
+        <div class="form-group mb-3">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" class="form-control" required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="url">URL</label>
+            <input type="url" name="url" id="url" class="form-control" required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="description">Description</label>
+            <textarea name="description" id="description" cols="30" rows="5" class="form-control"></textarea>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Add News Item</button>
+        </div>
+
+        <div class="err-msg"></div>
+    </form>
+    <script src="/js/news/submit.js"></script>
+<%- include("../layouts/footer") %> 

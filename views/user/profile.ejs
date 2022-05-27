@@ -1,0 +1,7 @@
+<%- include("../layouts/header") %> 
+<div>
+    <strong>User:</strong> <%= user.username %> <br>
+    <strong>Created:</strong> <%= user.date_created %> <br>
+    <strong>About:</strong> <a href="/users/<%= user.username %>/submissions">submissions</a> | <a href="/users/<%= user.username %>/comments">comments</a> | <a href="/users/<%= user.username %>/likes">likes</a>
+</div>
+<%- include("../layouts/footer") %> 

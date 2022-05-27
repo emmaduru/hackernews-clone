@@ -1,0 +1,21 @@
+<%- include("../layouts/header") %> 
+<ul class="list-group list-group-light">
+    <% comments.forEach(comment => { %>
+        <li class="list-group-item d-flex">
+            <button class="btn <% if (user && comment.likes.includes(user._id)) { %> btn-primary <% } else { %> btn-outline-primary <% } %>mx-3 comment-like-btn" id="<%= comment._id %> <%= comment.news.slug %>">
+                <i class="fa-solid fa-angle-up fa-2x"></i><br>
+                <%= comment.likes.length %> 
+            </button> 
+            <div class="d-flex align-items-center">
+                <div>
+                    <span><%= comment.body %></span><br>
+                    <small class="text-muted">
+                        posted by <a href="/users/<%= comment.author.username %>"><%= comment.author.username %></a> <%= comment.date_created %> | on <a href="/news/<%= comment.news.slug %>"><%= comment.news.title %></a> 
+                    </small>
+                </div>
+            </div>
+        </li>
+    <% }) %> 
+</ul>
+<script src="/js/comment/like.js"></script>
+<%- include("../layouts/footer") %> 

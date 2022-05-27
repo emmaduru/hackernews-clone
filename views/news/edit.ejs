@@ -1,0 +1,25 @@
+<%- include("../layouts/header") %> 
+    <h3>Edit News Link</h3>
+
+    <form id="news-edit-form">
+        <div class="form-group mb-3">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" value="<%= news.title %>" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="url">URL</label>
+            <input type="url" name="url" id="url" value="<%= news.url %>" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="description">Description</label>
+            <textarea name="description" id="description" cols="30" rows="5" class="form-control"><%= news.description %></textarea>
+        </div>
+        <input type="hidden" name="slug" value="<%= news.slug %>">
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Edit News Link</button>
+        </div>
+
+        <div class="err-msg"></div>
+    </form>
+    <script src="/js/news/edit.js"></script>
+<%- include("../layouts/footer") %>

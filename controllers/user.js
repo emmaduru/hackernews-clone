@@ -18,7 +18,7 @@ module.exports = {
         const {username} = req.params
         try {
             const user = await User.findOne({username})
-            const news = await News.find({author: user._id})
+            const news = await News.find({author: user._id}).populate("author")
             res.render("home", {news, title: user.username})
         } catch(err) {
             res.json({success: false, error: "Could not find user."})

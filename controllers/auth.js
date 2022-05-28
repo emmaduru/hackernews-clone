@@ -17,7 +17,7 @@ module.exports = {
         const {username, email, password} = req.body
         if (!username || !email || !password) throw new Error("All Fields are required.")
         try {
-            const user_exists = await User.find({$or: [{username}, {email}]})
+            const user_exists = await User.findOne({$or: [{username}, {email}]})
             if (user_exists) {
                 throw new Error("Username or Email already exists.")
                 
